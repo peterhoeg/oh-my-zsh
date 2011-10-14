@@ -10,7 +10,7 @@ for rbenvdir in "$HOME/.rbenv" "/usr/local/rbenv" "/opt/rbenv" ; do
     alias gemsets="rbenv gemset list"
 
     function current_ruby() {
-      echo "$(rbenv version | cut -f1 -d ' ')"
+      echo "$(rbenv version-name)"
     }
 
     function current_gemset() {
