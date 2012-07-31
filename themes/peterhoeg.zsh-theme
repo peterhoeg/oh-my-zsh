@@ -16,3 +16,5 @@ git_custom_status() {
 RPS1='%n@%m$(git_custom_status)[`rbenv_prompt_info`]`battery_pct_prompt` $EPS1'
 
 PROMPT='%{$fg[cyan]%}[%~% ]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
+
+# vim: filetype=sh
