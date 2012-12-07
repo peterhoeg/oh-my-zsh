@@ -6,9 +6,18 @@
 
 # Determine what character to use in place of the '$' for my prompt.
 function repo_char {
-  git branch >/dev/null 2>/dev/null && echo '☿' && return
-  #echo '○'
+  git branch >/dev/null 2>/dev/null && echo '±' && return
+  hg root >/dev/null 2>/dev/null && echo '☿' && return
   echo '$'
+}
+
+# requires https://bitbucket.org/sjl/hg-prompt
+function hg_prompt_info {
+  hg prompt --angle-brackets "\
+< on <branch>>\
+< at <tags|, >>\
+<status|modified|unknown><update><
+patches: <patches|join( → )>>" 2>/dev/null
 }
 
 # Display any virtual env stuff with python.
@@ -28,5 +37,9 @@ PROMPT='
 %n%{$reset_color%} at %{$fg[green]%}%m%{$reset_color%} in %{$fg[white]%}${PWD/#$HOME/~}%{$reset_color%}$(git_prompt_info)
 $(virtualenv_info)$(repo_char) '
 
-# Display the date. (My desktop at work uses $(date -u ...) instead, because I use UTC a lot at work.
-RPROMPT='$(date "+%x %T %Z")'
+# Do not show when running mc
+if [[ /proc/$PPID/exe -ef /usr/bin/mc ]] ; then
+  RPROMPT=''
+else
+  RPROMPT='$(date "+%x %T %Z")'
+fi
