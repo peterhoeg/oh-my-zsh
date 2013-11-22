@@ -17,7 +17,8 @@ for rbenvdir in "${rbenvdirs[@]}" ; do
     FOUND_RBENV=1
     export RBENV_ROOT=$rbenvdir
     export PATH=${rbenvdir}/bin:$PATH
-    eval "$(rbenv init -)"
+    # eval "$(rbenv init -)"
+    eval "$(rbenv init --no-rehash - zsh)"
 
     alias rubies="rbenv versions"
     alias gemsets="rbenv gemset list"
