@@ -1,1 +1,1 @@
-peterhoeg-dark.zsh-theme
+peterhoeg-light.zsh-theme
