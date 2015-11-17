@@ -1,1 +1,0 @@
-peterhoeg-light.zsh-theme
